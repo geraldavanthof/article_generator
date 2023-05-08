@@ -4,14 +4,14 @@ from bertopic import BERTopic
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return render_template("index.html", content="Testing")
-
 topic_model = BERTopic.load("model/topic_model")
 data_subset = pd.read_csv("clean_data_subset.csv")
 docs = data_subset['text_cleaned'].to_list()
 x = topic_model.get_document_info(docs)
+
+@app.route("/")
+def home():
+    return render_template("index.html", content="Testing")
 
 @app.route("/predict")
 def predict():

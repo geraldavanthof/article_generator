@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <title>Medium Article Browser</title>
     <style>
         body {
+            background-color: #FFC6E6;
             font-family: sans-serif;
             padding: 1em;
+            text-align: center;
         }
 
         h1 {
@@ -15,12 +18,12 @@
 
         .form-container {
             display: flex;
+            justify-content: center;
             align-items: center;
             margin-bottom: 1em;
         }
 
         .form-container input[type="text"] {
-            flex-grow: 1;
             padding: 0.5em;
             font-size: 1.2em;
             border: none;
@@ -31,7 +34,7 @@
         .form-container button {
             padding: 0.5em 1em;
             font-size: 1.2em;
-            background-color: #007bff;
+            background-color: #FF6CCC;
             color: #fff;
             border: none;
             border-radius: 0.25em;
@@ -54,27 +57,32 @@
         .article h3 {
             margin-top: 0;
             margin-bottom: 0.5em;
+            text-align: left;
         }
 
         .article p {
             margin-top: 0;
             margin-bottom: 1em;
+            text-align: left;
         }
 
         .article a {
-            display: inline-block;
-            color: #007bff;
+            display: block;
+            color: #FF6CCC;
             text-decoration: none;
             font-weight: bold;
+            margin-top: 1em;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
     <h1>Medium Article Browser</h1>
-    <p>Enter a topic you're interested in:</p>
-    <input type="text" id="search-box">
-    <button id="search-button">Search</button>
+    <div class="form-container">
+        <input type="text" id="search-box" placeholder="Search for articles...">
+        <button id="search-button">Search</button>
+    </div>
     <div class="article-container"></div>
 
     <script>
