@@ -6,8 +6,8 @@
     <title>Medium Article Browser</title>
     <style>
         body {
-            background-color: #FFC6E6;
-            font-family: sans-serif;
+            background-color: #A7D5D1;
+            font-family: Helvetica;
             padding: 1em;
             text-align: center;
         }
@@ -15,6 +15,8 @@
         h1 {
             margin-top: 0;
         }
+
+
 
         .form-container {
             display: flex;
@@ -34,7 +36,7 @@
         .form-container button {
             padding: 0.5em 1em;
             font-size: 1.2em;
-            background-color: #FF6CCC;
+            background-color: #648C95;
             color: #fff;
             border: none;
             border-radius: 0.25em;
@@ -68,7 +70,7 @@
 
         .article a {
             display: block;
-            color: #FF6CCC;
+            color: #486977;
             text-decoration: none;
             font-weight: bold;
             margin-top: 1em;
@@ -78,24 +80,22 @@
 </head>
 
 <body>
-    <h1>Medium Article Browser</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Medium_%28website%29_logo.svg" alt="logo" width="300">
+    <h1>Article Browser</h1>
     <div class="form-container">
-        <input type="text" id="search-box" placeholder="Search for articles...">
+        <input type="text" id="search-box" placeholder="&#128269; Search for articles...">
         <button id="search-button">Search</button>
     </div>
     <div class="article-container"></div>
 
     <script>
-        // Get references to the search box and article container
         const searchBox = document.querySelector("#search-box");
         const articleContainer = document.querySelector(".article-container");
 
-        // Add a click event listener to the search button
         document.querySelector("#search-button").addEventListener("click", async () => {
-            // Get the user's search query
+
             const query = searchBox.value;
 
-            // Send a POST request to the server with the user's query
             const response = await fetch("/predict", {
                 method: "POST",
                 headers: {

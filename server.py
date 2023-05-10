@@ -21,8 +21,6 @@ def predict():
 @app.route("/predict", methods=["POST"])
 def do_prediction():
     topic = request.json["topic"]
-    # docs = data_subset['text_cleaned'].to_list()
-    # x = topic_model.get_document_info(docs)
     ind_list = x[x.Topic==topic_model.find_topics(topic)[0][0]].sort_values('Probability', ascending=False)[0:5].index
     result = data_subset[['title', 'summary', 'url']].loc[ind_list]
     return result.to_json(orient="records")

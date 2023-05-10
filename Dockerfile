@@ -1,12 +1,16 @@
-FROM python:3.7
+FROM python:3.10.11
 
 WORKDIR /app
 
-RUN pip install pandas scikit-learn flask gunicorn
+#COPY requirements.txt .
 
-ADD ./model ./model
-ADD server.py server.py
+RUN pip install --no-deps bertopic
+RUN pip install --upgrade numpy hdbscan umap-learn pandas scikit-learn tqdm plotly pyyaml
+Run pip install flask
 
-EXPOSE 5000
 
-CMD [ "gunicorn", "--bind", "0.0.0.0:5000", "server:app" ]
+COPY ./model/topic_model ./model/topic_model
+COPY server.py server.py
+COPY clean_data_subset.csv clean_data_subset.csv
+
+CMD [ "python", "server.py" ]
